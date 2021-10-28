@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 8315164093804575841}
   - component: {fileID: 8315164093804575869}
   - component: {fileID: 8315164093804575868}
+  - component: {fileID: 7592597869525994870}
+  - component: {fileID: 6103422947190192471}
   - component: {fileID: 8315164093804575866}
   m_Layer: 10
   m_Name: spearmen
@@ -74,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 562794083
-  m_SortingLayer: 5
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -4337481982405143786, guid: 7c4d2dce57401674ba489c5fe492b712, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -153,6 +155,42 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.45, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7592597869525994870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8315164093804575840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4044950716c3f6048b365a51403aa496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  physics: {fileID: 8315164093804575869}
+  animator: {fileID: 8315164093804575841}
+  spearmenAttack: {fileID: 6103422947190192471}
+  attackRate: 0
+--- !u!114 &6103422947190192471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8315164093804575840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 415ec562ed8188a43a970cc1b091715b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8315164093804575841}
+  spearmenController: {fileID: 7592597869525994870}
+  attackPoint: {fileID: 8315164093928379088}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  attackRange: 0.7
 --- !u!114 &8315164093804575866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,24 +200,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8315164093804575840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78cfe666b38abf04b911be84d878c704, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f7de7179557c2e40b588ad0869b32fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  facingLeft: 0
-  attackRate: 0
-  attackPoint: {fileID: 8315164093928379088}
-  attackRange: 0
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  dirX: 0
-  seesPlayer: 0
+  coinPrefab: {fileID: 8185479508125929106, guid: a54b88f2f10ff5943930cbf91ddc5435, type: 3}
   animator: {fileID: 8315164093804575841}
-  idle: 0
-  boxCollider2D: {fileID: 0}
-  lootSpawnPoint: {x: 0, y: 0, z: 0}
-  lootPrefab: {fileID: 8185479508125929106, guid: 931799548f387964fa42fc25cbdf452c, type: 3}
+  boxCollider2D: {fileID: 8315164093804575868}
+  coinSpawnPoint: {x: 0, y: 0, z: 0}
+  timeOfDeath: 0
+  deathDelay: 0
+  lootDropped: 0
 --- !u!1 &8315164093928379091
 GameObject:
   m_ObjectHideFlags: 0

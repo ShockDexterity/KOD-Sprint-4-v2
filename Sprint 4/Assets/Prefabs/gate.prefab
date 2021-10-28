@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4744444261261627999}
   - component: {fileID: 4744444261261627985}
   - component: {fileID: 4744444261261627986}
-  - component: {fileID: 4744444261261627988}
+  - component: {fileID: 2322817239283141707}
   m_Layer: 0
   m_Name: gate
   m_TagString: Gate
@@ -130,7 +130,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.95454544, y: 2.909091}
   m_EdgeRadius: 0
---- !u!114 &4744444261261627988
+--- !u!114 &2322817239283141707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
