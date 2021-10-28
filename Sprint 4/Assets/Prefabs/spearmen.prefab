@@ -75,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 562794083
-  m_SortingLayer: 0
+  m_SortingLayerID: 1712635647
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -4337481982405143786, guid: 7c4d2dce57401674ba489c5fe492b712, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7de7179557c2e40b588ad0869b32fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinPrefab: {fileID: 8185479508125929106, guid: a54b88f2f10ff5943930cbf91ddc5435, type: 3}
+  coinPrefab: {fileID: 8185479508125929106, guid: 931799548f387964fa42fc25cbdf452c, type: 3}
   animator: {fileID: 8315164093804575841}
   boxCollider2D: {fileID: 8315164093804575868}
   coinSpawnPoint: {x: 0, y: 0, z: 0}

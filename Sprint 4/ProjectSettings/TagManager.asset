@@ -22,8 +22,8 @@ TagManager:
   - TotalBarrier
   - Decoration
   - Enemies
-  - PlayerOnly
   - EnemyBarrier
+  - Player
   - 
   - 
   - 
@@ -50,15 +50,9 @@ TagManager:
   - name: Background
     uniqueID: 3187003549
     locked: 0
-  - name: TotalBarrier
-    uniqueID: 1277799301
-    locked: 0
-  - name: Decoration
+  - name: Enemies
     uniqueID: 1712635647
     locked: 0
-  - name: EnemyBarrier
-    uniqueID: 3277432015
-    locked: 0
-  - name: Entities
+  - name: Player
     uniqueID: 562794083
     locked: 0

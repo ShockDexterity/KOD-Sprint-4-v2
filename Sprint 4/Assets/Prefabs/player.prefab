@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1449757500}
   - component: {fileID: 1449757501}
-  m_Layer: 0
+  - component: {fileID: 1037680173351887528}
+  m_Layer: 12
   m_Name: fireBreath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1558889603
+  m_SortingLayerID: 562794083
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -7235034062922316531, guid: ea615fa971f747b419d673731c01546e, type: 3}
@@ -83,6 +84,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1037680173351887528
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449757499}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77668639fb6979f489bb0e08ae276f60, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1231509607704084894
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,7 +214,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1558889603
+  m_SortingLayerID: 562794083
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -1416604817420825889, guid: 9d801fb86bfc85844ab41445fee39e96, type: 3}
@@ -304,10 +324,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4649807192410808618}
   health: 0
-  alive: 0
-  totalLoot: 0
-  coinCount: 0
-  gemCount: 0
 --- !u!114 &3139881154152200419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +413,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2951702226662495883}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: fireBreathAttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
