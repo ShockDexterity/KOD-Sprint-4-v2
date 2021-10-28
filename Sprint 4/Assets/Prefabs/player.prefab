@@ -216,7 +216,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 562794083
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1416604817420825889, guid: 9d801fb86bfc85844ab41445fee39e96, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf5f9fea999ba64e8ec755c0ad47720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frostAttack: {fileID: 5091382507319458049, guid: ca85781a9907e26479ee250c671dda2e, type: 3}
+  frostAttack: {fileID: 5091382507319458049, guid: 010922b3065b4a94fb6fd13fbd0f4755, type: 3}
   animator: {fileID: 4649807192410808618}
   attackPoint: {fileID: 8123374914044492018}
   attackRate: 0
