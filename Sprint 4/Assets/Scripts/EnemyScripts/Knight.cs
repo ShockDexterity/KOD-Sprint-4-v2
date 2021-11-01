@@ -14,6 +14,9 @@ public class Knight : MonoBehaviour
     public float timeOfDeath;
     public float deathDelay;
     public bool lootDropped;
+    public bool underAttack;
+    public float hurtDelay;
+    public float timeHurt;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +25,7 @@ public class Knight : MonoBehaviour
         centerOfKnight = boxCollider2D.size.y / 2f;
 
         deathDelay = 0.889f;
+        hurtDelay = 0.3f;
 
         health = 8;
         alive = true;
@@ -31,6 +35,11 @@ public class Knight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (underAttack && Time.time > timeHurt + hurtDelay)
+        {
+            this.GetComponent<SpriteRenderer>().color = Color.white;
+            underAttack = false;
+        }
         if (!alive)
         {
             this.GetComponent<KnightController>().enabled = false;
@@ -43,7 +52,12 @@ public class Knight : MonoBehaviour
 
     public void TakeDamage(int incomingDamage)
     {
+        timeHurt = Time.time;
+        underAttack = true;
+
         if (alive) { health -= incomingDamage; }
+
+        Debug.Log("Knight took " + incomingDamage + " damage. Health is now " + health + '.');
 
         if (health < 1)
         {
@@ -54,6 +68,8 @@ public class Knight : MonoBehaviour
             //this.GetComponent<BoxCollider2D>().isTrigger = true;
             animator.SetTrigger("Dead");
         }
+
+        if (alive) { this.GetComponent<SpriteRenderer>().color = Color.red; }
     }
 
     private void DropLoot()
