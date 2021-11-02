@@ -14,6 +14,8 @@ public class PlayerFrostAttack : MonoBehaviour
     private bool attacking;
     private float timeAttackStart;
 
+    public bool granted;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,9 +26,11 @@ public class PlayerFrostAttack : MonoBehaviour
         switch (scene.name)
         {
             case "wcTestingScene":
+                granted = true;
                 break;
 
             default:
+                granted = false;
                 this.enabled = false;
                 break;
         }

@@ -17,16 +17,7 @@ public class Lectern : MonoBehaviour
         animator = this.gameObject.GetComponent<Animator>();
         abilityDelay = timeUsed = 0f;
 
-        AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
-        foreach (AnimationClip clip in clips)
-        {
-            switch (clip.name)
-            {
-                case "lecternUsed":
-                    abilityDelay = clip.length;
-                    break;
-            }
-        }
+        abilityDelay = 2.111f;
     }
 
     // Update is called once per frame
@@ -41,7 +32,7 @@ public class Lectern : MonoBehaviour
 
         if (used && Time.time > (timeUsed + abilityDelay))
         {
-            //GameObject.FindGameObjectWithTag("Player").GetComponent<playerFrostAttack>().GrantAbility();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerFrostAttack>().granted = true;
         }
     }
 

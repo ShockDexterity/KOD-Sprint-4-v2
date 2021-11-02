@@ -34,19 +34,7 @@ public class TreasureChest : MonoBehaviour
 
         animator = this.GetComponent<Animator>();
 
-        AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
-        foreach (AnimationClip clip in clips)
-        {
-            switch (clip.name)
-            {
-                // Time jump force with animation
-                case "treasureChestOpening":
-                    lootDelay = clip.length;
-                    break;
-
-                default: break;
-            }
-        }
+        lootDelay = 1.017f;
 
         lootable = false;
     }

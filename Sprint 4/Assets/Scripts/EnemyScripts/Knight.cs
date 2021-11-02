@@ -57,19 +57,17 @@ public class Knight : MonoBehaviour
 
         if (alive) { health -= incomingDamage; }
 
-        Debug.Log("Knight took " + incomingDamage + " damage. Health is now " + health + '.');
-
         if (health < 1)
         {
             alive = false;
             timeOfDeath = Time.time;
             if (!lootDropped) { DropLoot(); }
-            //this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-            //this.GetComponent<BoxCollider2D>().isTrigger = true;
             animator.SetTrigger("Dead");
         }
-
-        if (alive) { this.GetComponent<SpriteRenderer>().color = Color.red; }
+        else
+        {
+            this.GetComponent<SpriteRenderer>().color = Color.red;
+        }
     }
 
     private void DropLoot()

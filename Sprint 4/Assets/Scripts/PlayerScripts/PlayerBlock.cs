@@ -26,7 +26,7 @@ public class PlayerBlock : MonoBehaviour
             this.GetComponent<PlayerFireBreath>().enabled = false;
             this.GetComponent<PlayerFrostAttack>().enabled = false;
         }
-        else
+        else if (this.GetComponent<Player>().alive)
         {
             blocking = false;
             animator.SetBool("Blocking", blocking);
@@ -34,7 +34,7 @@ public class PlayerBlock : MonoBehaviour
             this.GetComponent<PlayerController>().enabled = true;
             this.GetComponent<PlayerMelee>().enabled = true;
             this.GetComponent<PlayerFireBreath>().enabled = true;
-            this.GetComponent<PlayerFrostAttack>().enabled = true;
+            if (this.GetComponent<PlayerFrostAttack>().granted) { this.GetComponent<PlayerFrostAttack>().enabled = true; }
         }
     }
 }

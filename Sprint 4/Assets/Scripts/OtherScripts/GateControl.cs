@@ -15,23 +15,7 @@ public class GateControl : MonoBehaviour
     {
         animator = this.GetComponent<Animator>();
 
-        enterDelay = 0f;
-        AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
-        foreach (AnimationClip clip in clips)
-        {
-            switch (clip.name)
-            {
-                case "gateOpening":
-                    enterDelay += clip.length;
-                    break;
-
-                case "gateOpening1":
-                    enterDelay += clip.length;
-                    break;
-
-                default: break;
-            }
-        }
+        enterDelay = 1.117f + 1.017f;
     }
 
     // Update is called once per frame

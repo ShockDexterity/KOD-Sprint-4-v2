@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private int maxHealth = 50;
     public int health;
 
-    //private bool alive;
+    public bool alive;
     private float timeOfDeath;
 
     private int totalLoot;
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
         if (animator == null) { animator = this.GetComponent<Animator>(); }
 
         health = maxHealth;
-        //alive = true;
+        alive = true;
 
         timeOfDeath = 0f;
         totalLoot = coinCount = gemCount = 0;
@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
             health -= incomingDamage;
         }
 
-        if(health<1)
+        if (health < 1)
         {
             this.Die();
         }
@@ -65,19 +65,17 @@ public class Player : MonoBehaviour
     public void Die()
     {
         timeOfDeath = Time.time;
-        Debug.Log(timeOfDeath);
-        //alive = false;
+        alive = false;
+
+        this.GetComponent<PlayerBlock>().enabled = false;
 
         this.gameObject.GetComponent<PlayerController>().enabled = false;
-        Debug.Log(this.GetComponent<PlayerController>().enabled);
+
         this.GetComponent<PlayerMelee>().enabled = false;
-        Debug.Log(this.GetComponent<PlayerMelee>().enabled);
+
         this.GetComponent<PlayerFireBreath>().enabled = false;
-        Debug.Log(this.GetComponent<PlayerFireBreath>().enabled);
+
         this.GetComponent<PlayerFrostAttack>().enabled = false;
-        Debug.Log(this.GetComponent<PlayerFrostAttack>().enabled);
-        this.GetComponent<PlayerBlock>().enabled = false;
-        Debug.Log(this.GetComponent<PlayerBlock>().enabled);
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
