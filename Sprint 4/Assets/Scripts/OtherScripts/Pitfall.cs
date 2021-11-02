@@ -8,7 +8,8 @@ public class Pitfall : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Die();
+            collision.GetComponent<Player>().Die();
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>().PlayerFell();
         }
     }
 }

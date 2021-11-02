@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class SpikeTrap : MonoBehaviour
 {
-    public float lastTrigger = 0f;
+    //public float lastTrigger = 0f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && Time.time > lastTrigger + 5f)
+        if (collision.gameObject.tag == "Player" /*&& Time.time > lastTrigger + 5f*/)
         {
-            lastTrigger = Time.time;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().TakeDamage(5);
+            //lastTrigger = Time.time;
+            collision.GetComponent<Player>().TakeDamage(100);
         }
     }
 }
