@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnightController : MonoBehaviour
+public class MorningstarController : MonoBehaviour
 {
     public GameObject player;
     private float playerX;
     private float playerY;
-    private float knightX;
-    private float knightY;
+    private float morningstarX;
+    private float morningstarY;
 
     public Rigidbody2D physics;
     public Animator animator;
@@ -21,18 +21,17 @@ public class KnightController : MonoBehaviour
     private bool seesPlayer;
     private int dirX;
 
-    public KnightAttack knightAttack;
+    public MorningstarAttack morningstarAttack;
     public float attackRate;
     private float nextAttack;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Grabbing needed components
         player = GameObject.FindGameObjectWithTag("Player");
-        physics = this.gameObject.GetComponent<Rigidbody2D>();
-        animator = this.gameObject.GetComponent<Animator>();
-        knightAttack = this.gameObject.GetComponent<KnightAttack>();
+        physics = this.GetComponent<Rigidbody2D>();
+        animator = this.GetComponent<Animator>();
+        morningstarAttack = this.GetComponent<MorningstarAttack>();
 
         vel = new Vector2(1.5f, 0);
         moveRate = 1f;
@@ -46,18 +45,14 @@ public class KnightController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // While the knight doesn't see the player
         if (!seesPlayer)
         {
-            // Update movement
             if (moveCounter > moveRate)
             {
                 ChangeDirection();
                 moveCounter = 0f;
             }
-
             physics.velocity = vel * dirX;
-
             moveCounter += Time.deltaTime;
 
             FindPlayer();
@@ -69,16 +64,14 @@ public class KnightController : MonoBehaviour
             if (Time.time > nextAttack)
             {
                 nextAttack = Time.time + attackRate;
-                knightAttack.Attack();
+                morningstarAttack.Attack();
             }
         }
     }//end Update()
 
     private void ChangeDirection()
     {
-        // int [-1,2)
         dirX = Random.Range(-1, 2);
-
 
         switch (dirX)
         {
@@ -93,7 +86,7 @@ public class KnightController : MonoBehaviour
                 break;
 
             case 1:
-                idle = false;
+                idle = true;
                 transform.localScale = new Vector3(1, 1, 1);
                 facingLeft = false;
                 break;
@@ -106,19 +99,19 @@ public class KnightController : MonoBehaviour
         playerX = player.transform.position.x;
         playerY = player.transform.position.y;
 
-        knightX = this.transform.position.x;
-        knightY = this.transform.position.y;
+        morningstarX = this.transform.position.x;
+        morningstarY = this.transform.position.y;
 
-        if (Mathf.Abs(playerY - knightY) < 2f)
+        if (Mathf.Abs(playerY - morningstarY) < 2f)
         {
-            if (!facingLeft && playerX > knightX)
+            if (!facingLeft && playerX > morningstarX)
             {
-                if (playerX - knightX <= 5f) { seesPlayer = true; }
+                if (playerX - morningstarX <= 5f) { seesPlayer = true; }
                 return;
             }
-            else if (facingLeft && playerX < knightX)
+            else if (facingLeft && playerX < morningstarX)
             {
-                if (Mathf.Abs(playerX - knightX) <= 5f) { seesPlayer = true; }
+                if (Mathf.Abs(playerX - morningstarX) <= 5f) { seesPlayer = true; }
                 return;
             }
         }
@@ -127,17 +120,17 @@ public class KnightController : MonoBehaviour
     private void SeekPlayer()
     {
         playerX = player.transform.position.x;
-        knightX = this.transform.position.x;
+        morningstarX = this.transform.position.x;
 
-        if (Mathf.Abs(playerX - knightX) <= knightAttack.attackRange)
+        if (Mathf.Abs(playerX - morningstarX) <= morningstarAttack.attackRange)
         {
             dirX = 0;
-            if (playerX > knightX)
+            if (playerX > morningstarX)
             {
                 this.transform.localScale = Vector3.one;
                 this.facingLeft = false;
             }
-            else if (playerX < knightX)
+            else if (playerX < morningstarX)
             {
                 this.transform.localScale = new Vector3(-1, 1, 1);
                 this.facingLeft = true;
@@ -145,13 +138,13 @@ public class KnightController : MonoBehaviour
         }
         else
         {
-            if (playerX > knightX)
+            if (playerX > morningstarX)
             {
                 this.transform.localScale = Vector3.one;
                 this.facingLeft = false;
                 dirX = 1;
             }
-            else if (playerX < knightX)
+            else if (playerX < morningstarX)
             {
                 this.transform.localScale = new Vector3(-1, 1, 1);
                 this.facingLeft = true;
@@ -163,4 +156,4 @@ public class KnightController : MonoBehaviour
         idle = (physics.velocity.x < 0.01) ? true : false;
         animator.SetBool("Idle", idle);
     }//end SeekPlayer()
-}//end KnightController
+}
