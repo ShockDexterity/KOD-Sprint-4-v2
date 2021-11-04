@@ -79,7 +79,6 @@ public class KnightController : MonoBehaviour
         // int [-1,2)
         dirX = Random.Range(-1, 2);
 
-
         switch (dirX)
         {
             case -1:

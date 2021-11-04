@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mage : MonoBehaviour
+public class Archer : MonoBehaviour
 {
     public GameObject coinPrefab;
     public Animator animator;
     public BoxCollider2D boxCollider2D;
     public Vector3 coinSpawnPoint;
-    private float centerOfMage;
+    private float centerOfArcher;
     private int health;
     private bool alive;
     public float timeOfDeath;
@@ -22,7 +22,7 @@ public class Mage : MonoBehaviour
     void Start()
     {
         boxCollider2D = this.GetComponent<BoxCollider2D>();
-        centerOfMage = boxCollider2D.size.y / 2f;
+        centerOfArcher = boxCollider2D.size.y / 2f;
 
         deathDelay = 0.889f;
         hurtDelay = 0.3f;
@@ -42,7 +42,7 @@ public class Mage : MonoBehaviour
         }
         if (!alive)
         {
-            this.GetComponent<MageController>().enabled = false;
+            this.GetComponent<ArcherController>().enabled = false;
         }
         if (!alive && Time.time > timeOfDeath + deathDelay)
         {
@@ -75,7 +75,7 @@ public class Mage : MonoBehaviour
         float coinCenter = coinCollider.radius;
 
         float xPos = this.transform.position.x;
-        float yPos = this.transform.position.y - centerOfMage + coinCenter;
+        float yPos = this.transform.position.y - centerOfArcher + coinCenter;
         float zPos = this.transform.position.z;
 
         coinSpawnPoint = new Vector3(xPos, yPos, zPos);

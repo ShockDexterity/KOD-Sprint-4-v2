@@ -20,9 +20,6 @@ public class SpearmenController : MonoBehaviour
     private float moveCounter;
     private bool seesPlayer;
     private int dirX;
-
-    private bool alive;
-
     public SpearmenAttack spearmenAttack;
     public float attackRate;
     private float nextAttack;
@@ -36,7 +33,6 @@ public class SpearmenController : MonoBehaviour
         animator = this.gameObject.GetComponent<Animator>();
         spearmenAttack = this.gameObject.GetComponent<SpearmenAttack>();
 
-        alive = true;
         vel = new Vector2(1.5f, 0);
         moveRate = 1f;
         moveCounter = 0f;
@@ -49,35 +45,30 @@ public class SpearmenController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // If the knight is alive
-        if (alive)
+        // While the knight doesn't see the player
+        if (!seesPlayer)
         {
-
-            // While the knight doesn't see the player
-            if (!seesPlayer)
+            // Update movement
+            if (moveCounter > moveRate)
             {
-                // Update movement
-                if (moveCounter > moveRate)
-                {
-                    ChangeDirection();
-                    moveCounter = 0f;
-                }
-
-                physics.velocity = vel * dirX;
-
-                moveCounter += Time.deltaTime;
-
-                FindPlayer();
+                ChangeDirection();
+                moveCounter = 0f;
             }
-            else
-            {
-                SeekPlayer();
 
-                if (Time.time > nextAttack)
-                {
-                    nextAttack = Time.time + attackRate;
-                    spearmenAttack.Attack();
-                }
+            physics.velocity = vel * dirX;
+
+            moveCounter += Time.deltaTime;
+
+            FindPlayer();
+        }
+        else
+        {
+            SeekPlayer();
+
+            if (Time.time > nextAttack)
+            {
+                nextAttack = Time.time + attackRate;
+                spearmenAttack.Attack();
             }
         }
     }//end Update()
@@ -86,7 +77,6 @@ public class SpearmenController : MonoBehaviour
     {
         // int [-1,2)
         dirX = Random.Range(-1, 2);
-
 
         switch (dirX)
         {

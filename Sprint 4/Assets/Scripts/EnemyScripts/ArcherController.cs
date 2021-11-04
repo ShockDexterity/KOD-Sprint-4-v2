@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MageController : MonoBehaviour
+public class ArcherController : MonoBehaviour
 {
     public GameObject player;
     private float playerX;
     private float playerY;
-    private float mageX;
-    private float mageY;
+    private float archerX;
+    private float archerY;
 
     public Rigidbody2D physics;
     public Animator animator;
@@ -21,18 +21,18 @@ public class MageController : MonoBehaviour
     private bool seesPlayer;
     private int dirX;
 
-    public float attackRate;
+    private float attackRate;
     private float nextAttack;
+
     public GameObject attackPrefab;
     public Transform attackPoint;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Grabbing needed components
         player = GameObject.FindGameObjectWithTag("Player");
-        physics = this.gameObject.GetComponent<Rigidbody2D>();
-        animator = this.gameObject.GetComponent<Animator>();
+        physics = this.GetComponent<Rigidbody2D>();
+        animator = this.GetComponent<Animator>();
 
         vel = new Vector2(1f, 0);
         moveRate = 1f;
@@ -46,18 +46,14 @@ public class MageController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // While the mage doesn't see the player
         if (!seesPlayer)
         {
-            // Update movement
             if (moveCounter > moveRate)
             {
                 ChangeDirection();
                 moveCounter = 0f;
             }
-
             physics.velocity = vel * dirX;
-
             moveCounter += Time.deltaTime;
 
             FindPlayer();
@@ -70,11 +66,10 @@ public class MageController : MonoBehaviour
             if (Time.time > nextAttack)
             {
                 animator.SetTrigger("Attacking");
-                this.nextAttack = Time.time + this.attackRate;
+                nextAttack = Time.time + attackRate;
 
-                GameObject projectile = Instantiate(attackPrefab, attackPoint.position, Quaternion.identity);
-
-                projectile.GetComponent<Projectile>().Fire(facingLeft, 'm');
+                GameObject arrow = Instantiate(attackPrefab, attackPoint.position, Quaternion.identity);
+                //arrow.GetComponent<Arrow>().Fire(facingLeft);
             }
         }
     }//end Update()
@@ -110,19 +105,19 @@ public class MageController : MonoBehaviour
         playerX = player.transform.position.x;
         playerY = player.transform.position.y;
 
-        mageX = this.transform.position.x;
-        mageY = this.transform.position.y;
+        archerX = this.transform.position.x;
+        archerY = this.transform.position.y;
 
-        if (Mathf.Abs(playerY - mageY) < 2f)
+        if (Mathf.Abs(playerY - archerY) < 2f)
         {
-            if (!facingLeft && playerX > mageX)
+            if (!facingLeft && playerX > archerX)
             {
-                if (playerX - mageX <= 5f) { seesPlayer = true; }
+                if (playerX - archerX <= 5f) { seesPlayer = true; }
                 return;
             }
-            else if (facingLeft && playerX < mageX)
+            else if (facingLeft && playerX < archerX)
             {
-                if (playerX + 5f > mageX) { seesPlayer = true; }
+                if (playerX + 5f > archerX) { seesPlayer = true; }
                 return;
             }
         }
@@ -132,14 +127,14 @@ public class MageController : MonoBehaviour
     {
         if (!animator.GetBool("Idle")) { animator.SetBool("Idle", idle); }
         playerX = player.transform.position.x;
-        mageX = this.transform.position.x;
+        archerX = this.transform.position.x;
 
-        if (playerX > mageX)
+        if (playerX > archerX)
         {
             this.transform.localScale = new Vector3(-1, 1, 1);
             this.facingLeft = false;
         }
-        else if (playerX < mageX)
+        else if (playerX < archerX)
         {
             this.transform.localScale = new Vector3(1, 1, 1);
             this.facingLeft = true;
