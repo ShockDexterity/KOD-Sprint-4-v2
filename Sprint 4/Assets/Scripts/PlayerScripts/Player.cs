@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     public Animator animator;
 
-    private int maxHealth = 50;
+    private int maxHealth = 16;
     public int health;
 
     public bool alive;
@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
         if (!this.GetComponent<PlayerBlock>().blocking)
         {
             health -= incomingDamage;
+            GameObject.Find("healthIcons").GetComponent<HealthController>().UpdateHealth((health >= 0) ? health : 0);
         }
 
         if (health < 1)

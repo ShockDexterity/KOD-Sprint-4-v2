@@ -16,14 +16,19 @@ public class HealthController : MonoBehaviour
         healthSprites = Resources.LoadAll<Sprite>("");
 
         // healthpng = this.GetComponent<Image>();
-        this.GetComponent<Image>().image = healthSprites[16].texture;
+        //this.GetComponent<Image>().image = healthSprites[16].texture;
 
-        //spriteRenderer.sprite = healthSprites[16];
+        spriteRenderer.sprite = healthSprites[16];
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void UpdateHealth(int h)
+    {
+        spriteRenderer.sprite = healthSprites[h];
     }
 }
