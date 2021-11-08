@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class EndDoor : MonoBehaviour
 {
     public bool canEnter;
+    private Scene scene;
 
     // Start is called before the first frame update
     void Start()
     {
+        scene = SceneManager.GetActiveScene();
         canEnter = false;
     }
 
@@ -18,7 +20,20 @@ public class EndDoor : MonoBehaviour
     {
         if (canEnter && Input.GetKeyDown(KeyCode.E))
         {
-            SceneManager.LoadScene("YouWin");
+            switch (scene.name)
+            {
+                case "Level_1":
+                    SceneManager.LoadScene("Level_2");
+                    break;
+
+                case "Level_2":
+                    SceneManager.LoadScene("Level_3");
+                    break;
+
+                case "Level_3":
+                    SceneManager.LoadScene("YouWin");
+                    break;
+            }
         }
     }
 
