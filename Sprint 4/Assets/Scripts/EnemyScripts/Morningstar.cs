@@ -43,7 +43,7 @@ public class Morningstar : MonoBehaviour
         }
         if (!alive)
         {
-            this.GetComponent<KnightController>().enabled = false;
+            this.GetComponent<MorningstarController>().enabled = false;
         }
         if (!alive && Time.time > timeOfDeath + deathDelay)
         {

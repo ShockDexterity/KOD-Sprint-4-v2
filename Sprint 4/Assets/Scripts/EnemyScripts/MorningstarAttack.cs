@@ -19,7 +19,7 @@ public class MorningstarAttack : MonoBehaviour
         animator = this.GetComponent<Animator>();
         morningstarController = this.GetComponent<MorningstarController>();
 
-        attackDelay = 1.017f;
+        attackDelay = 1.273f;
 
         damage = 2;
     }
