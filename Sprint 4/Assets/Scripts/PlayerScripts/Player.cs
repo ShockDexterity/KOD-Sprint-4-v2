@@ -27,9 +27,6 @@ public class Player : MonoBehaviour
 
         timeOfDeath = 0f;
         totalLoot = coinCount = gemCount = 0;
-
-        Physics2D.IgnoreLayerCollision(11, 12);
-        Physics2D.IgnoreLayerCollision(10, 12);
     }
 
     // Update is called once per frame
