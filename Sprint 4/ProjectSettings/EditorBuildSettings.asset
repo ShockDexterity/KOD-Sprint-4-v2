@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/wcTestingScene.unity
+    path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/YouWin.unity
     guid: c210fbbc688a19145a86d3d86d1878d9
+  - enabled: 1
+    path: Assets/Scenes/Level_1.unity
+    guid: 7fc24e325978e6341b8a2e64e4c0d4f5
+  - enabled: 1
+    path: Assets/Scenes/Level_2.unity
+    guid: 634d13a0edf4b7c45869c977d55c5de3
+  - enabled: 1
+    path: Assets/Scenes/Level_3.unity
+    guid: 66497921f3a930d438c3f4c9928d2eb0
   m_configObjects: {}
