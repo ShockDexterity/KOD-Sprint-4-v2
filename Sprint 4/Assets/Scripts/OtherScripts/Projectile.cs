@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float moveSpeed;
+    public float speed;
     public int damage;
 
     public Vector3 initialPos;
@@ -22,7 +22,7 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
+        transform.Translate(speed * Time.deltaTime, 0, 0);
         if (Mathf.Abs(transform.position.x) > 15 + Mathf.Abs(initialPos.x))
         {
             Destroy(this.gameObject);
@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour
     public void Fire(bool left, char id)
     {
         this.id = id;
-        moveSpeed = (left) ? -3f : 3f;
+        speed = (left) ? -3f : 3f;
 
         switch (this.id)
         {

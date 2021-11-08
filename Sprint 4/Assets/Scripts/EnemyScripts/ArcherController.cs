@@ -26,6 +26,9 @@ public class ArcherController : MonoBehaviour
 
     public GameObject attackPrefab;
     public Transform attackPoint;
+    private bool inAttack;
+    private float timeFired;
+    private float attackDelay;
 
     // Start is called before the first frame update
     void Start()
@@ -39,8 +42,12 @@ public class ArcherController : MonoBehaviour
         moveCounter = 0f;
         seesPlayer = false;
         attackRate = 2f;
+        inAttack = false;
+        attackDelay = 1.167f;
 
         Physics2D.IgnoreLayerCollision(10, 10);
+        Physics2D.IgnoreLayerCollision(10, 13);
+        Physics2D.IgnoreLayerCollision(13, 13, true);
     }//end Start()
 
     // Update is called once per frame
@@ -67,9 +74,14 @@ public class ArcherController : MonoBehaviour
             {
                 animator.SetTrigger("Attacking");
                 nextAttack = Time.time + attackRate;
-
+                timeFired = Time.time;
+                inAttack = true;
+            }
+            if (inAttack && Time.time > timeFired + attackDelay)
+            {
+                inAttack = false;
                 GameObject arrow = Instantiate(attackPrefab, attackPoint.position, Quaternion.identity);
-                //arrow.GetComponent<Arrow>().Fire(facingLeft);
+                arrow.GetComponent<Arrow>().Fire();
             }
         }
     }//end Update()
@@ -125,7 +137,7 @@ public class ArcherController : MonoBehaviour
 
     private void SeekPlayer()
     {
-        if (!animator.GetBool("Idle")) { animator.SetBool("Idle", idle); }
+        if (!animator.GetBool("Idle")) { animator.SetBool("Idle", true); }
         playerX = player.transform.position.x;
         archerX = this.transform.position.x;
 

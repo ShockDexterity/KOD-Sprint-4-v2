@@ -2,83 +2,66 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Arrow : MonoBehaviour
 {
-    public Transform r_player;
-    public Transform r_init_arrow;
-    public Rigidbody2D physics;
+    public Vector3 player;
+    private Vector3 initialPosition;
     private int damage;
 
+    private float speed;
+
     private float timeFired;
-
-    private float dt;
-
-    private float v_x;
-    private float dx;
-
-    private float dti_y;
-    private float dtf_y;
-    private float vi_y;
-    private float dy;
-    private float dy_i;
 
     // Start is called before the first frame update
     void Start()
     {
-        physics = this.GetComponent<Rigidbody2D>();
-
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
         damage = 1;
 
-        v_x = 2f;
-
-        dx = r_player.position.x - r_init_arrow.position.x;
-        dy = r_player.position.y - r_init_arrow.position.y;
-
-        dtf_y = Mathf.Sqrt(1f / 4.9f);
-
-        dy_i = 1f + dy;
+        speed = 3f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= timeFired + dt)
-        {
-            Destroy(this.gameObject);
-        }
+        if (Time.time >= timeFired + 2f) { Destroy(this.gameObject); }
+        this.transform.position = Vector2.MoveTowards(this.transform.position, player, speed * Time.deltaTime);
+        // if (Time.time > timeFired + 0.1f)
+        // {
+        //     if (Mathf.Abs(this.transform.position.x - player.x) < 0.001f)
+        //     {
+        //         if (Mathf.Abs(this.transform.position.y - player.y) < 0.01f)
+        //         {
+        //             Destroy(this.gameObject);
+        //         }
+        //     }
+        // }
     }
 
-    public void Fire(bool left)
+    public void Fire()
     {
         timeFired = Time.time;
-        dt = dx / v_x;
-        dti_y = dt - dtf_y;
-
-        v_x *= (left) ? -1 : 1;
-
-        if (dy < 0f)
-        {
-            vi_y = (dy / dt) - (4.9f * dt);
-        }
-        else
-        {
-            vi_y = (2 * dy_i) / (dti_y);
-        }
-        Vector2 vel = new Vector2(v_x, vi_y);
-
-        physics.AddForce(vel, ForceMode2D.Impulse);
+        initialPosition = this.transform.position;
+        if (player.x > initialPosition.x) { transform.localScale = new Vector3(-1, 1, 1); }
     }
 
-    private void OnTriggerEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         switch (collision.gameObject.tag)
         {
+            case "AttackAllowed": break;
+            case "NoEnemy": break;
+            case "Enemy": break;
+
             case "Player":
-                collision.gameObject.GetComponent<Player>().TakeDamage(damage);
+                Player player = collision.gameObject.GetComponent<Player>();
+                if (player != null) { player.TakeDamage(damage); }
                 Destroy(this.gameObject);
                 break;
 
-            default: break;
+            default:
+                Destroy(this.gameObject);
+                break;
         }
     }
 }

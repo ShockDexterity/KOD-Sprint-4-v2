@@ -33,7 +33,10 @@ public class PlayerController : MonoBehaviour
         facingLeft = false;
 
         Physics2D.IgnoreLayerCollision(11, 12);
+        Physics2D.IgnoreLayerCollision(11, 13);
         Physics2D.IgnoreLayerCollision(10, 12);
+        Physics2D.IgnoreLayerCollision(10, 13);
+        Physics2D.IgnoreLayerCollision(13, 13, true);
     }
 
     // Update is called once per frame

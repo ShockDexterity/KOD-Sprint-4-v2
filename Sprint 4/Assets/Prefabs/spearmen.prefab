@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 286057795}
   - component: {fileID: 286057796}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: walker
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -34,6 +34,9 @@ public class PlayerFrostAttack : MonoBehaviour
                 this.enabled = false;
                 break;
         }
+
+        Physics2D.IgnoreLayerCollision(11, 12);
+        Physics2D.IgnoreLayerCollision(10, 12);
     }
 
     // Update is called once per frame

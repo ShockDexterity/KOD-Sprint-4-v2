@@ -400,7 +400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8011478514445747558}
   - component: {fileID: 127283924669185958}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: walker
   m_TagString: Untagged
   m_Icon: {fileID: 0}

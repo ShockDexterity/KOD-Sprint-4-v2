@@ -41,6 +41,8 @@ public class MageController : MonoBehaviour
         attackRate = 2f;
 
         Physics2D.IgnoreLayerCollision(10, 10);
+        Physics2D.IgnoreLayerCollision(10, 13);
+        Physics2D.IgnoreLayerCollision(13, 13, true);
     }//end Start()
 
     // Update is called once per frame
