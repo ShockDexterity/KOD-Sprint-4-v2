@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMelee : MonoBehaviour
 {
+    public AudioSource audioSource;
     public Animator animator;
     public PlayerController playerController;
     public Transform attackPoint;
@@ -34,6 +35,7 @@ public class PlayerMelee : MonoBehaviour
         if (!animator.GetBool("Jumping") && Input.GetMouseButtonDown(0) && (Time.time > nextAttack))
         {
             nextAttack = Time.time + attackRate;
+            audioSource.Play();
             Attack();
             timeAttacked = Time.time;
         }

@@ -72,12 +72,18 @@ public class PlayerFireBreath : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             Mage mage = enemy.GetComponent<Mage>();
+            Archer archer = enemy.GetComponent<Archer>();
             Knight knight = enemy.GetComponent<Knight>();
             Spearmen spearmen = enemy.GetComponent<Spearmen>();
+            Morningstar morningstar = enemy.GetComponent<Morningstar>();
 
             if (mage != null)
             {
                 mage.TakeDamage(damage);
+            }
+            else if (archer != null)
+            {
+                archer.TakeDamage(damage);
             }
             else if (knight != null)
             {
@@ -86,6 +92,10 @@ public class PlayerFireBreath : MonoBehaviour
             else if (spearmen != null)
             {
                 spearmen.TakeDamage(damage);
+            }
+            else if (morningstar != null)
+            {
+                morningstar.TakeDamage(damage);
             }
         }
     }//end Attack

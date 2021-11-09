@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     private int coinCount;
     private int gemCount;
 
+    private bool hijacked;
+    private float timeOfHijack;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,7 @@ public class Player : MonoBehaviour
 
         health = maxHealth;
         alive = true;
+        hijacked = false;
 
         timeOfDeath = 0f;
         totalLoot = coinCount = gemCount = 0;
@@ -34,6 +38,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (hijacked)
+        {
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2(2.5f, this.GetComponent<Rigidbody2D>().velocity.y);
+        }
+        if (hijacked && Time.time >= timeOfHijack + 3f)
+        {
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2(2.5f, this.GetComponent<Rigidbody2D>().velocity.y);
+            SceneManager.LoadScene("YouWin");
+        }
         if (timeOfDeath != 0f && Input.GetKeyDown(KeyCode.U) && Time.time >= (timeOfDeath + 5f))
         {
             Scene scene = SceneManager.GetActiveScene();
@@ -55,6 +68,7 @@ public class Player : MonoBehaviour
     {
         if ((health + pot) > maxHealth) { health = maxHealth; }
         else { health += pot; }
+        healthController.UpdateHealth(health);
     }
 
     public void TakeDamage(int incomingDamage)
@@ -63,8 +77,6 @@ public class Player : MonoBehaviour
         {
             health -= incomingDamage;
             healthController.UpdateHealth((health >= 0) ? health : 0);
-            Debug.Log(health);
-            Debug.Log("ouch");
         }
 
         if (health < 1)
@@ -80,7 +92,7 @@ public class Player : MonoBehaviour
 
         this.GetComponent<PlayerBlock>().enabled = false;
 
-        this.gameObject.GetComponent<PlayerController>().enabled = false;
+        this.GetComponent<PlayerController>().enabled = false;
 
         this.GetComponent<PlayerMelee>().enabled = false;
 
@@ -95,5 +107,17 @@ public class Player : MonoBehaviour
         }
 
         animator.SetTrigger("Died");
+    }
+
+    public void Hijack()
+    {
+        timeOfHijack = Time.time;
+        hijacked = true;
+        this.GetComponent<PlayerBlock>().enabled = false;
+        this.GetComponent<PlayerController>().enabled = false;
+        this.GetComponent<PlayerMelee>().enabled = false;
+        this.GetComponent<PlayerFireBreath>().enabled = false;
+        this.GetComponent<PlayerFrostAttack>().enabled = false;
+        Debug.Log(":)");
     }
 }

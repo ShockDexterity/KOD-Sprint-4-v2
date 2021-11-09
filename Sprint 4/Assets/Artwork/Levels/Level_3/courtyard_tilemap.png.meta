@@ -16,7 +16,7 @@ TextureImporter:
     second: edge_0
   - first:
       213: -7555406151135993570
-    second: pillar_1
+    second: wall_0
   - first:
       213: -1776929683011531352
     second: background_4
@@ -324,7 +324,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -332,6 +332,27 @@ TextureImporter:
       bones: []
       spriteID: cf87479f7a1f9c2e0800000000000000
       internalID: -2104885647072003844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e11ecb3c22ec52790800000000000000
+      internalID: -7555406151135993570
       vertices: []
       indices: 
       edges: []

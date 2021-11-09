@@ -25,7 +25,7 @@ public class PlayerFrostAttack : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         switch (scene.name)
         {
-            case "wcTestingScene":
+            case "Level_3":
                 granted = true;
                 break;
 

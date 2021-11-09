@@ -58,7 +58,7 @@ public class KnightController : MonoBehaviour
                 moveCounter = 0f;
             }
 
-            physics.velocity = vel * dirX;
+            physics.velocity = new Vector2(vel.x * dirX, physics.velocity.y);
 
             moveCounter += Time.deltaTime;
 
