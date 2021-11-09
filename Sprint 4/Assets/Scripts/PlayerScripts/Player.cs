@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public Animator animator;
+    public HealthController healthController;
 
     private int maxHealth = 16;
     public int health;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
 
         timeOfDeath = 0f;
         totalLoot = coinCount = gemCount = 0;
+        healthController = GameObject.Find("healthIcons").GetComponent<HealthController>();
     }
 
     // Update is called once per frame
@@ -49,12 +51,20 @@ public class Player : MonoBehaviour
         Debug.Log("You acquired some loot! Your total loot is now: " + totalLoot);
     }
 
+    public void Heal(int pot)
+    {
+        if ((health + pot) > maxHealth) { health = maxHealth; }
+        else { health += pot; }
+    }
+
     public void TakeDamage(int incomingDamage)
     {
         if (!this.GetComponent<PlayerBlock>().blocking)
         {
             health -= incomingDamage;
-            GameObject.Find("healthIcons").GetComponent<HealthController>().UpdateHealth((health >= 0) ? health : 0);
+            healthController.UpdateHealth((health >= 0) ? health : 0);
+            Debug.Log(health);
+            Debug.Log("ouch");
         }
 
         if (health < 1)

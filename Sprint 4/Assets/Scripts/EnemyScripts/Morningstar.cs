@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Morningstar : MonoBehaviour
 {
-
     public GameObject coinPrefab;
     public Animator animator;
     public BoxCollider2D boxCollider2D;
@@ -18,10 +18,12 @@ public class Morningstar : MonoBehaviour
     public bool underAttack;
     public float hurtDelay;
     public float timeHurt;
+    private Scene scene;
 
     // Start is called before the first frame update
     void Start()
     {
+        scene = SceneManager.GetActiveScene();
         boxCollider2D = this.GetComponent<BoxCollider2D>();
         centerOfMorningstar = boxCollider2D.size.y / 2f;
 
@@ -64,6 +66,13 @@ public class Morningstar : MonoBehaviour
             timeOfDeath = Time.time;
             if (!lootDropped) { DropLoot(); }
             animator.SetTrigger("Dead");
+            if (scene.name == "Level_3")
+            {
+                if (Random.Range(0, 5) == 4)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Heal(4);
+                }
+            }
         }
         else
         {

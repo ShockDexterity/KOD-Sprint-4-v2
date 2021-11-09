@@ -45,7 +45,7 @@ public class Projectile : MonoBehaviour
                 break;
 
             case 'm':
-                damage = 2;
+                damage = 1;
                 break;
 
             default:
@@ -83,6 +83,8 @@ public class Projectile : MonoBehaviour
                 // Do nothing
                 case "Player": break;
 
+                case "AttackPass": break;
+
                 case "NoEnemy": break;
 
                 // It hit some other collider, so it can be destroyed
@@ -95,16 +97,18 @@ public class Projectile : MonoBehaviour
         {
             switch (collision.gameObject.tag)
             {
-                // Do nothing
-                case "Enemy": break;
-
-                case "NoEnemy": break;
-
                 // It hit the player and deals damage
                 case "Player":
                     collision.GetComponent<Player>().TakeDamage(damage);
                     Destroy(this.gameObject);
                     break;
+
+                // Do nothing
+                case "Enemy": break;
+
+                case "NoEnemy": break;
+
+                case "AttackPass": break;
 
                 // It hit some other collider, so it can be destroyed
                 default:

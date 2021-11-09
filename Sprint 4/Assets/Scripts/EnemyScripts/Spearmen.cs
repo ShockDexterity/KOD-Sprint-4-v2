@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Spearmen : MonoBehaviour
 {
@@ -17,10 +18,12 @@ public class Spearmen : MonoBehaviour
     public bool underAttack;
     public float hurtDelay;
     public float timeHurt;
+    private Scene scene;
 
     // Start is called before the first frame update
     void Start()
     {
+        scene = SceneManager.GetActiveScene();
         boxCollider2D = this.GetComponent<BoxCollider2D>();
         centerOfSpearmen = boxCollider2D.size.y / 2f;
 
@@ -62,9 +65,14 @@ public class Spearmen : MonoBehaviour
             alive = false;
             timeOfDeath = Time.time;
             if (!lootDropped) { DropLoot(); }
-            //this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-            //this.GetComponent<BoxCollider2D>().isTrigger = true;
             animator.SetTrigger("Dead");
+            if (scene.name == "Level_3")
+            {
+                if (Random.Range(0, 5) == 4)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Heal(4);
+                }
+            }
         }
 
         if (alive) { this.GetComponent<SpriteRenderer>().color = Color.red; }
