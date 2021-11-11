@@ -11943,10 +11943,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: switch
       objectReference: {fileID: 0}
-    - target: {fileID: 8001874345655562744, guid: b1de48266a22ed941808f54e56b8a204, type: 3}
-      propertyPath: m_TagString
-      value: AttackPass
-      objectReference: {fileID: 0}
     - target: {fileID: 8001874345655562750, guid: b1de48266a22ed941808f54e56b8a204, type: 3}
       propertyPath: m_RootOrder
       value: 13

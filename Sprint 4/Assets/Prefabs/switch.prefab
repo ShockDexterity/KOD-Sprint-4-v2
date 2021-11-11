@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8001874345655562749}
   m_Layer: 9
   m_Name: switch
-  m_TagString: Untagged
+  m_TagString: AttackPass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 562794083
-  m_SortingLayer: 5
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -5544888675359148168, guid: 1f41b125aace9e74597e1a292454c125, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
